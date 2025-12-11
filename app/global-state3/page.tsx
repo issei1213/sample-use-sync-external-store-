@@ -6,7 +6,6 @@ import {
 } from "./counter-context";
 
 const CounterDisplay = () => {
-  console.log("Display Rendered"); // レンダリング確認用
   const count = useCounterValue();
   return (
     <div className="text-center mb-8">
@@ -17,7 +16,6 @@ const CounterDisplay = () => {
 };
 
 const Controls = () => {
-  console.log("Controls Rendered"); // レンダリング確認用
   const { increment, decrement } = useCounterActions();
   return (
     <div className="flex gap-4 justify-center mb-8">
