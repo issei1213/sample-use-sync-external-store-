@@ -5,8 +5,9 @@ import {
   useCounterActions,
 } from "./counter-context";
 
-const CounterDisplay = () => {
-  console.log("Display Rendered"); // レンダリング確認用
+import React from "react";
+
+const CounterDisplay = React.memo(() => {
   const count = useCounterValue();
   return (
     <div className="text-center mb-8">
@@ -14,11 +15,13 @@ const CounterDisplay = () => {
       <p className="text-gray-500 text-sm">現在のカウント</p>
     </div>
   );
-};
+});
 
-const Controls = () => {
-  console.log("Controls Rendered"); // レンダリング確認用
+CounterDisplay.displayName = "CounterDisplay";
+
+const Controls = React.memo(() => {
   const { increment, decrement } = useCounterActions();
+  
   return (
     <div className="flex gap-4 justify-center mb-8">
       <button
@@ -35,7 +38,9 @@ const Controls = () => {
       </button>
     </div>
   );
-};
+});
+
+Controls.displayName = "Controls";
 
 const Description = () => (
   <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">

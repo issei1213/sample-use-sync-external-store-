@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
-import { useSyncExternalStore } from "react";
+import React, { createContext, useCallback, useContext, useState } from "react";
 
 interface CounterStore {
   count: number;
@@ -36,9 +35,11 @@ export const useCounterActions = () => {
   const store = useContext(StoreContext);
   if (!store) throw new Error("Missing StoreProvider");
 
-  // useSyncExternalStoreを使わず、直接関数を返す
+  const increment = useCallback(() => store.setCount((c) => c + 1), [store]);
+  const decrement = useCallback(() => store.setCount((c) => c - 1), [store]);
+
   return {
-    increment: () => store.setCount((c) => c + 1),
-    decrement: () => store.setCount((c) => c - 1),
+    increment,
+    decrement,
   };
 };
