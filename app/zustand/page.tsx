@@ -1,6 +1,5 @@
 import { CounterDisplay } from "./uses-counter-display";
 import { UsesControls } from "./uses-controls";
-import { Description } from "./description";
 import { ZustandDisplay } from "./zustand-display";
 import { ZustandControls } from "./zustand-contols";
 
